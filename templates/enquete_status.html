@@ -1,0 +1,14 @@
+{% extends "header.html" %}
+{% load murder_extras %}
+{%block content %}
+L'enquête {{ enquete.piste.letter }} faite par {{ enquete.joueur.name }} / {{ enquete.joueur.character_name }} sur {{ enquete.piste.title }} avec {{ enquete.points }} points a eu un resultat de dé de {{ enquete.dice }} ce qui donne un résultat de niveau {{ enquete.niveau }}
+<br/>
+Intercepté : {{ enquete.intercepted }}
+<br/>
+Interceptions : 
+<ul>
+	{% for interception in enquete.interceptions %}
+	<li>Origine {{ interception.origin.name }} . Resultat {{ interception.get_resultat_display}} </li>
+	{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% load murder_extras %}
+{% include "header.html" %}
+<table class="table table-bordered">
+	<tr>
+		<th>
+		</th>
+		{% for joueur in joueur_list %}
+		<th>{{ joueur.character_name }}</th>
+		{% endfor %}
+	</tr>
+	{% for piste in piste_list %}
+	<tr>
+		<td>{{ piste }}</td>
+		{% for joueur in joueur_list %}
+		<td>{% getEnquete joueur piste %}</td>
+		{% endfor %}
+	</tr>
+
+	{% endfor %}
+</table>
+{% include "footer.html" %}

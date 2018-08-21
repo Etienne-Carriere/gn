@@ -1,0 +1,5 @@
+{% extends "header.html" %}
+{% load murder_extras %}
+{% block content %}
+Le joueur {{ interception.origin.name }} a tenté une interception sur {{ interception.target.character_name }} . Il a fait un {{ interception.dice }} ce qui donne un résultat de {{ interception.get_resultat_display }}
+{% endblock %}

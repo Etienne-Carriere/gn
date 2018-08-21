@@ -1,0 +1,22 @@
+<html>
+<head>
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+</head>
+<body>
+	<div>
+		{% bootstrap_button "Nouvelle enquete" button_type="link" button_class="btn-primary" href="/murder/enquete"%}
+		{% bootstrap_button "Liste" button_type="link" button_class="btn-primary" href="/murder/list" %}
+		{% bootstrap_button "Nouvelle interception" button_type="link" button_class="btn-primary" href="/murder/interception"%}
+	</div>
+	{% block content %}
+	{% endblock %}
+</body>
+</html>
