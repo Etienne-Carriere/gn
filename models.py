@@ -30,7 +30,7 @@ class Enquete(models.Model):
     def status(self,points):
         self.dice = random.randint(1, 6)
         self.points = points
-        if ((self.dice == 1) or ((self.dice + points - 1) == 1)):
+        if (self.dice == 1):
             self.niveau = '1'
         elif ((self.dice + points - 1) >= 6):
             self.niveau = '3'
