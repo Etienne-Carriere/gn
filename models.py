@@ -23,9 +23,18 @@ class Enquete(models.Model):
             ('2', '2'),
             ('3', '3')
         )
+
+    TYPE_CHOICES = (
+            ('E','ENQUETE'),
+            ('I','INTERCEPTION'),
+            ('C','COPIE')
+
+        )
     niveau = models.CharField('Niveau', max_length=1,choices=NIVEAU_CHOICES)
+    type   = models.CharField('Type', max_length=1,choices=TYPE_CHOICES,default='E')
     joueur = models.ForeignKey(Joueur)
     piste  = models.ForeignKey(Piste)
+    date   = models.DateTimeField(auto_now_add=True)
 
     def status(self,points):
         self.dice = random.randint(1, 6)
@@ -50,9 +59,27 @@ class Enquete(models.Model):
                    e.niveau = self.niveau
                    e.joueur = Joueur.objects.get(id = interception.origin.id)
                    e.piste  = self.piste
+                   e.type   = 'I'
                    e.save()
                 self.intercepted = self.intercepted or (interception.resultat == '0')
-            
+
+class Copie(models.Model):
+    origin = models.ForeignKey(Joueur,related_name="c_origin")
+    target = models.ForeignKey(Joueur,related_name="c_target")
+
+    def action(self):
+        copie = Enquete.objects.filter(joueur = self.target.id, type = 'E').order_by('-date').first()
+        if copie is not None:
+           e = Enquete()
+           e.niveau = copie.niveau
+           e.joueur = self.origin
+           e.piste  = copie.piste
+           e.type   = 'C'
+           e.save()
+           self.enquete = e
+
+        
+
 class Interception(models.Model):
     RESULTAT_TYPE = (
             ('0', 'Reussi'),

@@ -14,6 +14,10 @@ class EnqueteAdmin(admin.ModelAdmin):
 class InterceptionAdmin(admin.ModelAdmin):
     list_display = ('origin','target','resultat','done')
 
+class CopieAdmin(admin.ModelAdmin):
+    list_display = ('origin','target')
+
+admin.site.register(Copie,CopieAdmin)
 admin.site.register(Joueur,JoueurAdmin)
 admin.site.register(Piste,PisteAdmin)
 admin.site.register(Enquete,EnqueteAdmin)

@@ -1,0 +1,5 @@
+{% extends "header.html" %}
+{% load murder_extras %}
+{% block content %}
+Le joueur {{ copie.origin.name }} a copié sur {{ copie.target.character_name }} . Il a fait une copie du rapport {{ copie.enquete.piste.letter }} / {{ copie.enquete.piste.title }} avec le niveau de reussite {{ copie.enquete.niveau }}
+{% endblock %}

@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Enquete,Interception,Joueur
+from .models import Enquete,Interception,Joueur,Copie
 
 class EnqueteForm(forms.ModelForm):
     pointsChoices= ( (x,str(x)) for x in range(1,7))
@@ -23,3 +23,14 @@ class InterceptionForm(forms.ModelForm):
     class Meta:
         model = Interception
         fields = ( 'origin', )
+
+class CopieForm(forms.ModelForm):
+    field_order = ['origin','target']
+    targetChoices= ( (x.id,x.character_name) for x in Joueur.objects.all())
+    target = forms.ChoiceField(label = "Joueur cible", choices = targetChoices)
+
+    class Meta:
+        model = Copie
+        fields = ( 'origin', )
+
+
