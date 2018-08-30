@@ -1,6 +1,6 @@
 {% extends "header.html" %}
 {% load murder_extras %}
-{%block content %}
+{% block content %}
 L'enquête {{ enquete.piste.letter }} faite par {{ enquete.joueur.name }} / {{ enquete.joueur.character_name }} sur {{ enquete.piste.title }} avec {{ enquete.points }} points a eu un resultat de dé de {{ enquete.dice }} ce qui donne un résultat de niveau {{ enquete.niveau }}
 <br/>
 Intercepté : {{ enquete.intercepted }}

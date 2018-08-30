@@ -6,6 +6,9 @@ class EnqueteForm(forms.ModelForm):
     pointsChoices= ( (x,str(x)) for x in range(1,7))
     points = forms.ChoiceField(label = "Nombre de points pariés (y compris le 1er point de l'enquete)", choices = pointsChoices);
 
+    diceChoices= ( (x,str(x)) for x in range(1,7))
+    dice = forms.ChoiceField(label = "Resultat du dé", choices = diceChoices);
+
     class Meta:
         model = Enquete
         fields = ( 'joueur', 'piste')

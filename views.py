@@ -24,6 +24,7 @@ def enquete(request):
         form = EnqueteForm(request.POST)
         if form.is_valid():
             enquete = form.save(commit=False)
+            enquete.dice = int(form.cleaned_data['dice'])
             enquete.status(int(form.cleaned_data['points']))
             enquete.interception()
             if not enquete.intercepted:

@@ -37,7 +37,6 @@ class Enquete(models.Model):
     date   = models.DateTimeField(auto_now_add=True)
 
     def status(self,points):
-        self.dice = random.randint(1, 6)
         self.points = points
         if (self.dice == 1):
             self.niveau = '1'
