@@ -91,7 +91,6 @@ class Interception(models.Model):
     done = models.NullBooleanField('termine',default=False)
 
     def status(self):
-        self.dice = random.randint(1, 6)
         if (self.dice == 1):
             self.resultat = '2'
         elif (self.dice  == 2):

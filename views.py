@@ -41,6 +41,7 @@ def interception(request):
         if form.is_valid():
             interception = form.save(commit=False)
             interception.target = Joueur.objects.get(id = int(form.cleaned_data['target']))
+            interception.dice = int(form.cleaned_data['dice'])
             interception.status()
             interception.save()
             context = { "interception" : interception }

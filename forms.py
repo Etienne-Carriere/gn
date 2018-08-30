@@ -23,6 +23,10 @@ class InterceptionForm(forms.ModelForm):
     targetChoices= ( (x.id,x.character_name) for x in Joueur.objects.all())
     target = forms.ChoiceField(label = "Joueur cible", choices = targetChoices)
 
+    diceChoices= ( (x,str(x)) for x in range(1,7))
+    dice = forms.ChoiceField(label = "Resultat du dé", choices = diceChoices);
+
+
     class Meta:
         model = Interception
         fields = ( 'origin', )
